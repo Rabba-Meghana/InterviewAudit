@@ -106,8 +106,3 @@ For a company running AI-moderated interviews, biased questions are not just a r
 
 InterviewAudit estimates how much automated bias screening can reduce manual QA review while preserving methodological quality. The cost model is illustrative and should be recalibrated with a real team's interview volume, QA workflow, and reviewer cost.
 
-## Outreach Angle
-
-Suggested framing:
-
-> I ran a 216-question audit of LLM-moderated user interviews and found that generic "be a good interviewer" prompting still produced measurable leading and anchoring questions. Research-methods prompting helped, and a stricter bias guardrail helped more, but neither eliminated the issue. The useful product opportunity is moderator QA: automatically flag when the AI interviewer shaped the answer before customers ever read the transcript.
