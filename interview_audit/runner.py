@@ -227,7 +227,7 @@ def write_svg(summary: Dict, path: Path) -> None:
 
 
 def write_markdown(summary: Dict, path: Path) -> None:
-    lines = ["# InterviewAudit Pilot Results", ""]
+    lines = ["# InterviewAudit Results", ""]
     lines.append(f"Total scored interviewer questions: **{summary['total_questions']}**")
     lines.append("")
     lines.append("| Prompt style | Any bias | Leading | Closed | Anchoring | Avg severity |")
@@ -290,4 +290,3 @@ def main() -> None:
     write_markdown(summary, outdir / "summary.md")
     write_svg(summary, outdir / "bias_by_prompt.svg")
     print(f"Done. Results written to {outdir}")
-

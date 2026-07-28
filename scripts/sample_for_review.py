@@ -23,6 +23,15 @@ REVIEW_FIELDS = [
     "judge_neutral_rewrite",
 ]
 
+BLIND_REVIEW_FIELDS = [
+    "review_id",
+    "scenario_id",
+    "prompt_style",
+    "turn",
+    "question",
+    "your_label_any_bias",
+]
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -36,6 +45,11 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Output CSV path. Defaults to manual_review_sample.csv next to the input file.",
     )
+    parser.add_argument(
+        "--blind-out",
+        default=None,
+        help="Blind output CSV path. Defaults to manual_review_blind.csv next to the input file.",
+    )
     return parser.parse_args()
 
 
@@ -43,6 +57,7 @@ def main() -> None:
     args = parse_args()
     scores_path = Path(args.scores_csv)
     out_path = Path(args.out) if args.out else scores_path.with_name("manual_review_sample.csv")
+    blind_out_path = Path(args.blind_out) if args.blind_out else scores_path.with_name("manual_review_blind.csv")
 
     with scores_path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
@@ -96,10 +111,16 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(out_rows)
 
+    blind_rows = [{field: row[field] for field in BLIND_REVIEW_FIELDS} for row in out_rows]
+    with blind_out_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=BLIND_REVIEW_FIELDS)
+        writer.writeheader()
+        writer.writerows(blind_rows)
+
     print(f"Wrote {len(out_rows)} rows to {out_path}")
-    print("Fill your_label_any_bias with TRUE/FALSE before comparing with the judge columns.")
+    print(f"Wrote blind review file to {blind_out_path}")
+    print("Fill your_label_any_bias in the blind file with TRUE/FALSE before comparing with judge labels.")
 
 
 if __name__ == "__main__":
     main()
-

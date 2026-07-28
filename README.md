@@ -86,12 +86,12 @@ Create a manual review sample:
 python3 scripts/sample_for_review.py outputs/20260727_192301/question_scores.csv
 ```
 
-Open `outputs/20260727_192301/manual_review_sample.csv`, fill `your_label_any_bias` with `TRUE` or `FALSE`, then compare against the judge labels. This is a lightweight sanity check, not a replacement for a full human-annotation study.
+Open `outputs/20260727_192301/manual_review_blind.csv`, fill `your_label_any_bias` with `TRUE` or `FALSE`, then compare against the judge labels. This is a lightweight sanity check, not a replacement for a full human-annotation study.
 
 After labeling the sample, calculate agreement:
 
 ```bash
-python3 scripts/score_manual_review.py outputs/20260727_192301/manual_review_sample.csv
+python3 scripts/score_manual_review.py outputs/20260727_192301/manual_review_blind.csv --answers outputs/20260727_192301/manual_review_sample.csv
 ```
 
 ## Why This Matters

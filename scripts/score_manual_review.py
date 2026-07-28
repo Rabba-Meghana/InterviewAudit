@@ -20,6 +20,11 @@ def parse_bool(value: str):
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Score human agreement with the LLM judge review sample.")
     parser.add_argument("manual_review_csv", help="Path to manual_review_sample.csv")
+    parser.add_argument(
+        "--answers",
+        default=None,
+        help="Optional answer-key CSV with judge columns. Use this when scoring manual_review_blind.csv.",
+    )
     return parser.parse_args()
 
 
@@ -28,6 +33,20 @@ def main() -> None:
     path = Path(args.manual_review_csv)
     with path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
+
+    if args.answers:
+        answers_path = Path(args.answers)
+        with answers_path.open(newline="", encoding="utf-8") as f:
+            answers = {row["review_id"]: row for row in csv.DictReader(f)}
+        merged_rows = []
+        for row in rows:
+            answer = answers.get(row["review_id"])
+            if not answer:
+                raise SystemExit(f"No judge answer found for review_id={row['review_id']}")
+            merged = dict(answer)
+            merged["your_label_any_bias"] = row.get("your_label_any_bias", "")
+            merged_rows.append(merged)
+        rows = merged_rows
 
     total = 0
     agree = 0
@@ -62,4 +81,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
