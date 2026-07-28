@@ -91,8 +91,10 @@ Open `outputs/20260727_192301/manual_review_blind.csv`, fill `your_label_any_bia
 After labeling the sample, calculate agreement:
 
 ```bash
-python3 scripts/score_manual_review.py outputs/20260727_192301/manual_review_blind.csv --answers outputs/20260727_192301/manual_review_sample.csv
+python3 scripts/score_manual_review.py outputs/20260727_192301/manual_review_blind.csv
 ```
+
+The included manual validation sample has been labeled. Agreement with the LLM judge was `12/15` (`80.0%`). All three disagreements were stricter human labels, suggesting the judge may under-call subtle bias rather than overstate it.
 
 ## Why This Matters
 

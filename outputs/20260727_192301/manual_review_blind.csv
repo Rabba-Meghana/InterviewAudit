@@ -1,22 +1,22 @@
 review_id,scenario_id,prompt_style,turn,question,your_label_any_bias
-1,bank_fraud_alerts,ux_guidelines,5,"Have you ever thought about what information or context the bank could provide with the alert that would make it more clear whether or not you need to take action, or if you could safely ignore it?",
-2,checkout_flow,bias_guardrail,5,How do you usually perceive the time it takes to resolve an issue with customer support when you're checking out?,
-3,grocery_substitution,bare,3,"How do you currently find out about these substitutions, such as through notifications during checkout, or by receiving an updated order summary after the substitution has been made?",
-4,travel_planning,ux_guidelines,5,Are there any specific features or capabilities that you think an AI itinerary planner would need to have in order to provide you with the kind of suggestions and guidance that you described?,
+1,bank_fraud_alerts,ux_guidelines,5,"Have you ever thought about what information or context the bank could provide with the alert that would make it more clear whether or not you need to take action, or if you could safely ignore it?",FALSE
+2,checkout_flow,bias_guardrail,5,How do you usually perceive the time it takes to resolve an issue with customer support when you're checking out?,FALSE
+3,grocery_substitution,bare,3,"How do you currently find out about these substitutions, such as through notifications during checkout, or by receiving an updated order summary after the substitution has been made?",TRUE
+4,travel_planning,ux_guidelines,5,Are there any specific features or capabilities that you think an AI itinerary planner would need to have in order to provide you with the kind of suggestions and guidance that you described?,TRUE
 5,budgeting_app,bare,4,"It can be challenging to keep track of all your expenses, especially the smaller ones.
 
-Do you think there's anything that would make it more appealing to you to use a budgeting app, like this one that automatically categorizes your spending?",
-6,fitness_onboarding,bias_guardrail,4,What do you think would be the most important information for a fitness app to know about you in order to provide effective workout recommendations and progress tracking?,
-7,customer_support_bot,ux_guidelines,3,"You mentioned that you eventually sent an email to cancel your subscription, which was easier than the live support experience. What made the email process more straightforward for you, and do you think it's because of the format or the way the email support was set up?",
-8,learning_dashboard,bias_guardrail,2,What information do you think would be most useful to see on the dashboard when your child is struggling with a particular subject or assignment?,
-9,budgeting_app,bias_guardrail,6,"How do you think you might use a budgeting app to help you manage your financial anxiety, if you were to use one regularly?",
-10,job_alerts,bare,6,"Would you be willing to provide more detailed information about your skills and experience to a job search platform that uses algorithms to rank job openings, in exchange for more accurate and relevant job suggestions?",
-11,telehealth_booking,ux_guidelines,1,Can you walk me through your most recent experience booking a telehealth appointment for yourself or your elderly parent - what specifically led you to choose a telehealth option over an in-person visit?,
-12,budgeting_app,ux_guidelines,2,What was the most frustrating part about trying to manually track your expenses in that situation?,
-13,grocery_substitution,bias_guardrail,6,"If you were to review and approve substitutions, what factors would you consider most important in determining whether a suggested substitution is suitable for your daughter's needs?",
+Do you think there's anything that would make it more appealing to you to use a budgeting app, like this one that automatically categorizes your spending?",TRUE
+6,fitness_onboarding,bias_guardrail,4,What do you think would be the most important information for a fitness app to know about you in order to provide effective workout recommendations and progress tracking?,TRUE
+7,customer_support_bot,ux_guidelines,3,"You mentioned that you eventually sent an email to cancel your subscription, which was easier than the live support experience. What made the email process more straightforward for you, and do you think it's because of the format or the way the email support was set up?",TRUE
+8,learning_dashboard,bias_guardrail,2,What information do you think would be most useful to see on the dashboard when your child is struggling with a particular subject or assignment?,FALSE
+9,budgeting_app,bias_guardrail,6,"How do you think you might use a budgeting app to help you manage your financial anxiety, if you were to use one regularly?",TRUE
+10,job_alerts,bare,6,"Would you be willing to provide more detailed information about your skills and experience to a job search platform that uses algorithms to rank job openings, in exchange for more accurate and relevant job suggestions?",TRUE
+11,telehealth_booking,ux_guidelines,1,Can you walk me through your most recent experience booking a telehealth appointment for yourself or your elderly parent - what specifically led you to choose a telehealth option over an in-person visit?,TRUE
+12,budgeting_app,ux_guidelines,2,What was the most frustrating part about trying to manually track your expenses in that situation?,TRUE
+13,grocery_substitution,bias_guardrail,6,"If you were to review and approve substitutions, what factors would you consider most important in determining whether a suggested substitution is suitable for your daughter's needs?",FALSE
 14,budgeting_app,bare,1,"Let's get started with the interview. I'm here to understand your thoughts and feelings about a new student budgeting app that can automatically categorize your spending. 
 
 Here's my first question:
 
-Have you ever used a budgeting or expense-tracking app before?",
-15,team_notes,bare,2,"How do you currently handle the situation when multiple people are contributing to the meeting notes at the same time, and it becomes difficult to keep track of who said what and when?",
+Have you ever used a budgeting or expense-tracking app before?",TRUE
+15,team_notes,bare,2,"How do you currently handle the situation when multiple people are contributing to the meeting notes at the same time, and it becomes difficult to keep track of who said what and when?",TRUE

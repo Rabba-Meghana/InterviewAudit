@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--answers",
         default=None,
-        help="Optional answer-key CSV with judge columns. Use this when scoring manual_review_blind.csv.",
+        help="Optional answer-key CSV with judge columns. Defaults to manual_review_sample.csv next to a blind review file.",
     )
     return parser.parse_args()
 
@@ -34,8 +34,17 @@ def main() -> None:
     with path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
-    if args.answers:
-        answers_path = Path(args.answers)
+    answers_path = Path(args.answers) if args.answers else None
+    if "judge_any_bias" not in rows[0]:
+        default_answers = path.with_name("manual_review_sample.csv")
+        if answers_path is None and default_answers.exists():
+            answers_path = default_answers
+        elif answers_path is None:
+            raise SystemExit(
+                "This file does not include judge labels. Pass --answers path/to/manual_review_sample.csv."
+            )
+
+    if answers_path:
         with answers_path.open(newline="", encoding="utf-8") as f:
             answers = {row["review_id"]: row for row in csv.DictReader(f)}
         merged_rows = []

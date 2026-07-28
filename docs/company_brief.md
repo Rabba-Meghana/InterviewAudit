@@ -45,7 +45,7 @@ In the full 216-question Groq run:
 
 That is a 55.6% relative reduction versus the bare prompt.
 
-Important limitation: these labels come from an LLM judge. Before using the result as a strong public claim, run the included manual-review sample and report human agreement honestly.
+Important limitation: the full-run labels come from an LLM judge. A 15-question manual sanity check showed 12/15 agreement with the judge. All three disagreements were stricter human labels, suggesting the judge may under-call subtle bias rather than overstate it.
 
 ## Practical Product Angle
 
