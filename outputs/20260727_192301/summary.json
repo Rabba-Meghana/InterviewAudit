@@ -1,0 +1,49 @@
+{
+  "by_prompt": {
+    "bare": {
+      "questions": 72,
+      "any_bias_rate": 0.875,
+      "leading_rate": 0.5416666666666666,
+      "closed_rate": 0.18055555555555555,
+      "anchoring_rate": 0.625,
+      "loaded_rate": 0,
+      "double_barreled_rate": 0.3472222222222222,
+      "avg_severity": 1.5277777777777777
+    },
+    "ux_guidelines": {
+      "questions": 72,
+      "any_bias_rate": 0.75,
+      "leading_rate": 0.3194444444444444,
+      "closed_rate": 0.05555555555555555,
+      "anchoring_rate": 0.3888888888888889,
+      "loaded_rate": 0.013888888888888888,
+      "double_barreled_rate": 0.5,
+      "avg_severity": 1.1527777777777777
+    },
+    "bias_guardrail": {
+      "questions": 72,
+      "any_bias_rate": 0.3888888888888889,
+      "leading_rate": 0.1527777777777778,
+      "closed_rate": 0.027777777777777776,
+      "anchoring_rate": 0.2222222222222222,
+      "loaded_rate": 0.013888888888888888,
+      "double_barreled_rate": 0.18055555555555555,
+      "avg_severity": 0.5694444444444444
+    }
+  },
+  "best_prompt": "bias_guardrail",
+  "relative_bias_reduction_vs_bare": 0.5555555555555556,
+  "cost_model": {
+    "assumptions": {
+      "interviews_per_month": 1000,
+      "manual_review_minutes_per_interview": 10,
+      "reviewer_hourly_cost_usd": 45,
+      "automated_screening_sends_only_flagged_interviews_to_human_review": true
+    },
+    "all_manual_review_monthly_cost_usd": 7500.0,
+    "screen_then_review_flagged_monthly_cost_usd": 2916.67,
+    "estimated_monthly_savings_usd": 4583.33
+  },
+  "turns_per_interview": 6,
+  "total_questions": 216
+}
