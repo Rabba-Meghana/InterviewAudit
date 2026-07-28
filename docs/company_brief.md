@@ -35,15 +35,17 @@ Each interviewer question was scored for:
 - double-barreled structure
 - severity
 
-## Pilot Result
+## Full-Run Result
 
-In the first live Groq run:
+In the full 216-question Groq run:
 
-- Bare prompt: 75.0% of questions had at least one bias issue.
-- UX-guidelines prompt: 62.5%.
-- Bias-guardrail prompt: 25.0%.
+- Bare prompt: 87.5% of questions had at least one bias issue.
+- UX-guidelines prompt: 75.0%.
+- Bias-guardrail prompt: 38.9%.
 
-That is a 66.7% relative reduction versus the bare prompt.
+That is a 55.6% relative reduction versus the bare prompt.
+
+Important limitation: these labels come from an LLM judge. Before using the result as a strong public claim, run the included manual-review sample and report human agreement honestly.
 
 ## Practical Product Angle
 
@@ -55,13 +57,12 @@ Instead of only checking whether participants are low-quality or fraudulent, the
 
 ## Why This Saves Money
 
-The pilot cost model assumes:
+The cost model assumes:
 
 - 1,000 interviews/month
 - 10 minutes of manual QA per interview
 - $45/hour reviewer cost
 
-All-manual QA would cost about $7,500/month. If automated screening routes only flagged interviews to human review, the pilot model estimates about $5,625/month in QA savings.
+All-manual QA would cost about $7,500/month. If automated screening routes only flagged interviews to human review, the full-run model estimates about $4,583/month in QA savings.
 
 The exact dollar value should be recalibrated with real Listen Labs volumes and review workflows, but the direction is clear: better moderator QA means fewer bad transcripts need expensive human cleanup.
-

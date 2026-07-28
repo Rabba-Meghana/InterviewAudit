@@ -48,10 +48,10 @@ Install dependencies:
 python3 -m pip install -r requirements.txt
 ```
 
-Run a quick live pilot:
+Run a quick live test:
 
 ```bash
-python3 run_eval.py --max-scenarios 4 --turns 5
+python3 run_eval.py --max-scenarios 1 --turns 3
 ```
 
 Run a larger evaluation:
@@ -70,14 +70,29 @@ Results are written to `outputs/<run_id>/`:
 - `summary.md`: readable findings
 - `bias_by_prompt.svg`: chart for LinkedIn or email
 
-The included live pilot run is in `outputs/pilot_real_run/`.
+The included full run is in `outputs/20260727_192301/`.
 
-Pilot headline:
+Full-run headline:
 
-- Bare interviewer prompt: 75.0% biased-question rate
-- UX-guidelines prompt: 62.5% biased-question rate
-- Strict bias-guardrail prompt: 25.0% biased-question rate
-- Relative reduction from bare to guardrail: 66.7%
+- Total scored interviewer questions: 216
+- Bare interviewer prompt: 87.5% biased-question rate
+- UX-guidelines prompt: 75.0% biased-question rate
+- Strict bias-guardrail prompt: 38.9% biased-question rate
+- Relative reduction from bare to guardrail: 55.6%
+
+Create a manual review sample:
+
+```bash
+python3 scripts/sample_for_review.py outputs/20260727_192301/question_scores.csv
+```
+
+Open `outputs/20260727_192301/manual_review_sample.csv`, fill `your_label_any_bias` with `TRUE` or `FALSE`, then compare against the judge labels. This is a lightweight sanity check, not a replacement for a full human-annotation study.
+
+After labeling the sample, calculate agreement:
+
+```bash
+python3 scripts/score_manual_review.py outputs/20260727_192301/manual_review_sample.csv
+```
 
 ## Why This Matters
 
@@ -87,10 +102,10 @@ For a company running AI-moderated interviews, biased questions are not just a r
 - Customers may make product decisions from contaminated feedback.
 - Trust drops if the AI moderator appears suggestive or salesy.
 
-InterviewAudit estimates how much automated bias screening can reduce manual QA review while preserving methodological quality.
+InterviewAudit estimates how much automated bias screening can reduce manual QA review while preserving methodological quality. The cost model is illustrative and should be recalibrated with a real team's interview volume, QA workflow, and reviewer cost.
 
-## LinkedIn Angle
+## Outreach Angle
 
 Suggested framing:
 
-> I ran a small audit of LLM-moderated user interviews and found that generic "be a good interviewer" prompting still produced measurable leading and anchoring questions. A research-methods prompt reduced bias, but did not eliminate it. The interesting product opportunity is not just better prompting, but automatic interview QA before customers ever read the transcript.
+> I ran a 216-question audit of LLM-moderated user interviews and found that generic "be a good interviewer" prompting still produced measurable leading and anchoring questions. Research-methods prompting helped, and a stricter bias guardrail helped more, but neither eliminated the issue. The useful product opportunity is moderator QA: automatically flag when the AI interviewer shaped the answer before customers ever read the transcript.
